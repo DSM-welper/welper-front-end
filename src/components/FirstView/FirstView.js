@@ -1,6 +1,12 @@
 import "./FirstView.scss";
-const Login = () => {
-  return <div>first</div>;
+import FirstScreen from "./FirstScreen";
+
+const FirstView = () => {
+  return (
+    <>
+      <FirstScreen />
+    </>
+  );
 };
 
-export default Login;
+export default FirstView;

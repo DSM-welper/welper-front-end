@@ -1,7 +1,7 @@
 import React from "react";
 import { FirstView } from "../components/index";
 
-const login = () => {
+const First = () => {
   return (
     <div>
       <FirstView></FirstView>
@@ -9,4 +9,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default First;
