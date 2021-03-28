@@ -1,10 +1,13 @@
 import "./FirstView.scss";
-import FirstScreen from "./FirstScreen";
+import { FirstScreen, SecondScreen, ThirdScreen, FourthScreen } from "./";
 
 const FirstView = () => {
   return (
     <>
       <FirstScreen />
+      <SecondScreen />
+      <ThirdScreen />
+      <FourthScreen />
     </>
   );
 };
