@@ -25,3 +25,10 @@ body {
   font-family: "AppleSDGothicNeo";
   src: url("../font/AppleSDGothicNeo.ttf");
 }
+
+.background-public {
+  background-image: url("../../assets/img/background.png");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
