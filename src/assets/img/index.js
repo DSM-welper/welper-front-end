@@ -28,3 +28,5 @@ export { default as user_mock } from "./user_mock.png";
 export { default as user_side_img } from "./user_side_img.png";
 export { default as user } from "./user.png";
 export { default as welper_logo } from "./welper_logo.png";
+export { default as category_menu } from "./category_menu.png";
+export { default as category_datail } from "./category_detail.png";
