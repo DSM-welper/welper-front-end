@@ -1,11 +1,11 @@
 import "./FirstView.scss";
 import { FirstScreen, SecondScreen, ThirdScreen, FourthScreen } from "./";
 
-const FirstView = () => {
+const FirstView = ({ list }) => {
   return (
     <>
       <FirstScreen />
-      <SecondScreen />
+      <SecondScreen items={list} />
       <ThirdScreen />
       <FourthScreen />
     </>
