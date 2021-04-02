@@ -205,3 +205,15 @@ $text: #707070;
     }
   }
 }
+
+.not-found-container {
+  text-align: center;
+  h1 {
+    color: $mainColor;
+    font-size: 3rem;
+    margin: 1rem 0;
+  }
+  p {
+    color: $text;
+  }
+}
