@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import NotFound from "./NotFound";
 import { RecommendItem } from "./";
 import "./FirstView.scss";
@@ -16,8 +17,9 @@ const SecondScreen = ({ items }) => {
         ) : (
           <NotFound />
         )}
-
-        <button className="main-button">더보기</button>
+        <Link href="category-list">
+          <button className="main-button">더보기</button>
+        </Link>
       </section>
     </div>
   );
