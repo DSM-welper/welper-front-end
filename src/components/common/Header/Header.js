@@ -1,6 +1,6 @@
 import "./Header.scss";
 import { welper_logo, search, user_color, triangle } from "../../../assets/img";
-import test from "./test.jpg";
+
 const Header = () => {
   return (
     <div className="header-container">
@@ -10,7 +10,7 @@ const Header = () => {
         <input placeholder="검색" />
         <img src={search} />
         <div className="header-profile">
-          <img src={test} />
+          <img />
         </div>
         <img src={triangle} className="menu-img" />
       </div>
