@@ -50,6 +50,7 @@ $img: "../../assets/img/category_menu.png";
   height: 27rem;
   overflow: auto;
   padding: 1rem;
+  margin-top: 2rem;
   &::-webkit-scrollbar {
     width: 0.3rem;
   }
@@ -64,7 +65,7 @@ $img: "../../assets/img/category_menu.png";
     border-radius: 0.8rem;
     background-color: white;
     box-shadow: #00000029 0.1rem 0.25rem 0.8rem;
-    padding: 1.3rem 0rem 0 1.25rem;
+    padding: 1.2rem 0rem 0 1.2rem;
     margin-bottom: 1.2rem;
     transition: all ease 0.5s;
     &:hover {
@@ -88,9 +89,23 @@ $img: "../../assets/img/category_menu.png";
       }
     }
     .content-box {
-      margin-top: 0.8rem;
+      margin-top: 0.3rem;
       width: 50%;
       display: inline-block;
     }
   }
+}
+
+.default-container {
+  display: flex;
+  padding: 9rem;
+  justify-content: center;
+  align-items: center;
+  h3 {
+    color: #802457;
+  }
+}
+
+.search {
+  color: #802457;
 }
