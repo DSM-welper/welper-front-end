@@ -1,11 +1,11 @@
 import PageTemplate from "../common/PageTemplate/PageTemplate";
 import WelpareDetail from "./WelpareDetail";
-
-const DetailView = () => {
+import { useEffect } from "react";
+const DetailView = ({ content }) => {
   return (
     <div className="background-public">
       <PageTemplate>
-        <WelpareDetail></WelpareDetail>
+        <WelpareDetail data={content}></WelpareDetail>
       </PageTemplate>
     </div>
   );
