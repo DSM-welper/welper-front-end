@@ -1,0 +1,57 @@
+$mainColor: #802457;
+
+.qna {
+  display: flex;
+
+  &-section {
+    background-color: #80245720;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-inner {
+    background-color: white;
+    border-radius: 1.5rem;
+    padding: 1.3rem 2rem;
+    width: 92%;
+    height: 90%;
+    box-shadow: #00000016 0px 3px 6px;
+  }
+  &-header {
+    padding-bottom: 1rem;
+    width: 100%;
+    height: 3rem;
+    border-bottom: 1px solid #9b9b9b49;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-article {
+    display: flex;
+    justify-content: space-between;
+    width: 12rem;
+  }
+  &-menu-box {
+    display: flex;
+    align-items: center;
+    opacity: 0.4;
+    color: $mainColor;
+    cursor: pointer;
+    opacity: 0.4;
+    p {
+      margin-left: 0.6rem;
+    }
+
+    &:hover {
+      opacity: 1;
+      transition: 0.3s;
+    }
+  }
+  &-h1 {
+    color: $mainColor;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+}
