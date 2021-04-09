@@ -8,9 +8,7 @@ export async function AllCategory(numOfPage) {
 }
 
 export async function CategoryDetail(id) {
-  const { data } = await getClientAccessToken.get(
-    "http://13.125.199.215:8080" + `/category/detail/${id}`
-  );
+  const { data } = await getClientAccessToken.get(`/category/detail/${id}`);
   return {
     data,
   };
@@ -27,18 +25,15 @@ export async function CategorySearch(content, numOfPage) {
 }
 
 export async function CategoryTag(numOfPage, categoryName) {
-  const { data } = await getClientAccessToken.get(
-    "http://13.125.199.215:8080" + "/category/tag",
-    {
-      params: {
-        numOfPage: numOfPage,
-        categoryName: categoryName,
-      },
-      paramsSerializer: (params) => {
-        return qs.stringify(params, { arrayFormat: "repeat" });
-      },
-    }
-  );
+  const { data } = await getClientAccessToken.get("/category/tag", {
+    params: {
+      numOfPage: numOfPage,
+      categoryName: categoryName,
+    },
+    paramsSerializer: (params) => {
+      return qs.stringify(params, { arrayFormat: "repeat" });
+    },
+  });
   return {
     data,
   };
