@@ -12,7 +12,7 @@ const QnAPageTemplate = ({ children }) => {
       img: user_color,
       width: 23,
       height: 23,
-      link: "/my-qna",
+      link: "/qna/mine",
     },
     {
       name: "글 쓰기",
@@ -28,7 +28,10 @@ const QnAPageTemplate = ({ children }) => {
       <section className="qna-section">
         <article className="qna-inner">
           <header className="qna-header">
-            <Image src={welper_logo} width={45} height={25} />
+            <Link href="/qna">
+              <Image src={welper_logo} width={45} height={25} />
+            </Link>
+
             <article className="qna-article">
               {menu.map((m, index) => {
                 return (
