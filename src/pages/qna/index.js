@@ -1,12 +1,11 @@
 import React from "react";
-import { QnA } from "../components";
+import { QnAList } from "../../containers";
 
 const Qna = () => {
   return (
     <div>
-      <QnA />
+      <QnAList/>
     </div>
   );
 };
-
 export default Qna;
