@@ -2,7 +2,7 @@ export { default as add_qna_color } from "./add_qna_color.png";
 export { default as arrow_out } from "./arrow_out.png";
 export { default as background_transparent } from "./background_transparent.png";
 export { default as circle_background } from "./circle_background.png";
-export { default as delete } from "./delete.png";
+export { default as deleteIcon } from "./deleteIcon.png";
 export { default as email } from "./email.png";
 export { default as first_user_icon } from "./first_user_icon.png";
 export { default as first_view_background } from "./first_view_background.png";
