@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { question_white, deleteIcon } from "../../assets/img";
+import { question_white, delete_icon } from "../../assets/img";
 
 const QnAListItem = ({ title, writer, date, id }) => {
   return (
@@ -17,7 +17,7 @@ const QnAListItem = ({ title, writer, date, id }) => {
             <p>
               {date[0]}.{date[1]}.{date[2]}
             </p>
-            <Image src={deleteIcon} width={15} height={15} />
+            <Image src={delete_icon} width={15} height={15} />
           </div>
         </div>
       </div>

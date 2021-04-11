@@ -1,4 +1,3 @@
-import React from "react";
 import { QnAListItem } from "./";
 import "./QnA.scss";
 import QnAPageTemplate from "../common/QnAPageTemplate/QnAPageTemplate";
