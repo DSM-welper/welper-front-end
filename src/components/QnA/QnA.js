@@ -3,8 +3,7 @@ import "./QnA.scss";
 import QnAPageTemplate from "../common/QnAPageTemplate/QnAPageTemplate";
 import NotFound from "../FirstView/NotFound";
 
-const QnA = ({ postList, prevPage, nextPage, page, text }) => {
-  console.log(postList);
+const QnA = ({ postList, prevPage, nextPage, page }) => {
   return (
     <>
       <QnAPageTemplate>

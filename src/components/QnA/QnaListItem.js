@@ -5,7 +5,7 @@ import { question_white, delete_icon } from "../../assets/img";
 
 const QnAListItem = ({ title, writer, date, id }) => {
   return (
-    <Link href={`/qna/[${id}]`}>
+    <Link href={`/qna/${id}`}>
       <div className="qna-list">
         <div className="qna-list-item">
           <div>
