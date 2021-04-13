@@ -8,13 +8,6 @@ import { EditProfile } from "../../lib/api/user";
 const Profile = ({ data }) => {
   let [isMa, setMarry] = useState("");
   let [gender, setGender] = useState("");
-  let [edit, setEdit] = useState({
-    marry: null,
-    gender: null,
-    disorder: true,
-    age: 0,
-    name: null,
-  });
 
   useEffect(() => {
     switch (data.gender) {
@@ -37,12 +30,7 @@ const Profile = ({ data }) => {
         return setMarry("비공개");
     }
   }, []);
-
-  // useEffect(() => {
-  //   console.log(edit);
-  // }, [edit]);
-
-  const profileEdit = () => {
+  const profileEdit = async () => {
     let age = document.getElementById("age").value;
     let name = document.getElementById("name").value;
     let gender = document.getElementById("gender");
@@ -55,16 +43,26 @@ const Profile = ({ data }) => {
     else isDisorder = false;
 
     if (disorder.options[disorder.selectedIndex].value === "null") {
-      toast.warning("정보를 다 기입해 주세요.", { position: "top-right" });
+      toast.warning("정보를 다 기입해 주세요.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } else {
-      EditProfile(
+      await EditProfile(
         marry.options[marry.selectedIndex].value,
         gender.options[gender.selectedIndex].value,
         isDisorder,
         age,
         name
       ).then((res) => {
-        console.log(res.statusText);
+        if (res.status === 200)
+          toast.success("프로필이 변경 되었습니다.", {
+            position: "top-left",
+            autoClose: 2000,
+          });
+        setTimeout(function () {
+          window.location.reload();
+        }, 2000);
       });
     }
   };
@@ -110,7 +108,7 @@ const Profile = ({ data }) => {
             </select>
           </div>
           <button className="profile-button" onClick={profileEdit}>
-            완료
+            변경
           </button>
         </div>
       </PageTemplate>
