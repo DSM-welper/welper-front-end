@@ -4,7 +4,7 @@ import "./Login.scss";
 import { email, lock } from "../../assets/img";
 import Link from "next/link";
 
-const Login = () => {
+const Login = ({ onSubmitLogin, onChangeLoginInput }) => {
   return (
     <AuthPageTemplate>
       <div className="auth-container">
@@ -15,7 +15,7 @@ const Login = () => {
             Email
             <div className="auth-input">
               <Image src={email} width={28} height={22} />
-              <input placeholder="이메일을 입력하세요" />
+              <input placeholder="이메일을 입력하세요" name="email" onChange={onChangeLoginInput} />
             </div>
           </label>
         </div>
@@ -24,7 +24,7 @@ const Login = () => {
             Password
             <div className="auth-input">
               <Image src={lock} width={20} height={25} />
-              <input placeholder="비밀번호를 입력하세요" />
+              <input placeholder="비밀번호를 입력하세요" type="password" name="password" onChange={onChangeLoginInput} />
             </div>
           </label>
           <Link href="sign-up">
@@ -33,7 +33,9 @@ const Login = () => {
             </p>
           </Link>
         </div>
-        <button className="auth-container-button">LOGIN</button>
+        <button className="auth-container-button" onClick={onSubmitLogin}>
+          LOGIN
+        </button>
       </div>
     </AuthPageTemplate>
   );
