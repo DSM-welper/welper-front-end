@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import "./PageTemplate.scss";
 
 const PageTemplate = ({ children }) => {
   return (
