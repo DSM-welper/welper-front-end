@@ -30,5 +30,7 @@ export { default as welper_logo } from "./welper_logo.png";
 export { default as empty } from "./empty.png";
 export { default as question_white } from "./question_white.png";
 export { default as welper_icon } from "./welper_icon.png";
+export { default as profileImg } from "./profile.png";
 export { default as auth_background } from "./auth_background.png";
 export { default as auth_mock } from "./auth_mock.png";
+
