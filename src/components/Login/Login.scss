@@ -69,9 +69,10 @@ $mainColor: #802457;
     outline: none;
     cursor: pointer;
     margin-top: 5rem;
+    opacity: 0.8;
 
     &:hover {
-      background-color: #9f1662;
+      opacity: 1;
       transition: 0.3s;
     }
   }
