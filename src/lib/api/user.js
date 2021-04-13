@@ -7,12 +7,11 @@ export async function GetMyProfile() {
 }
 
 export async function EditProfile(marry, gender, disorder, age, name) {
-  const { data } = await client.patch("/user", {
+  return await client.patch("/user", {
     marry: marry,
     gender: gender,
     disorder: disorder,
     age: age,
     name: name,
   });
-  return { data };
 }
