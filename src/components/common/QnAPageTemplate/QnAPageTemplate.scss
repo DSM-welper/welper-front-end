@@ -27,6 +27,10 @@ $mainColor: #802457;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    img {
+      cursor: pointer;
+    }
   }
   &-article {
     display: flex;
