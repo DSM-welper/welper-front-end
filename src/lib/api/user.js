@@ -15,3 +15,15 @@ export async function EditProfile(marry, gender, disorder, age, name) {
     name: name,
   });
 }
+
+export async function Email(mail) {
+  return await client.post("/mail", { mail: mail });
+}
+
+export async function AuthEmail(code, mail) {
+  return await client.patch("/mail", { authCode: code, mail: mail });
+}
+
+export async function SignUp(data) {
+  return await client.post("/auth/signup", data);
+}
