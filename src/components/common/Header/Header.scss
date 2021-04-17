@@ -1,6 +1,7 @@
 .header-container {
   display: flex;
   padding-top: 2rem;
+  height: 100%;
   margin: 0rem 18rem 0rem 18rem;
   justify-content: space-between;
   .logo {
@@ -10,7 +11,6 @@
   }
 
   .search-container {
-    width: 39%;
     display: flex;
     align-items: center;
     input {
@@ -18,11 +18,13 @@
       border: none;
       border-bottom: 1px solid #d1d1d1;
       height: 50%;
+      width: 13.5rem;
       font-size: 15px;
       margin-right: 1rem;
     }
     img {
       height: 55%;
+      cursor: pointer;
     }
     .header-profile {
       overflow: hidden;
