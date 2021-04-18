@@ -12,7 +12,7 @@ const First = ({ data }) => {
 First.getInitialProps = async () => {
   const { recommendList } = await (await getRecommendList()).data;
   return {
-    data : recommendList,
+    data: recommendList,
   };
 };
 export default First;
