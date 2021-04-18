@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import QnA from "../../components/QnA/QnA";
 import { WarningToast } from "../../lib/toast";
 import { getQnAList, getMyQnAList } from "../../lib/api/qna";
+import client from "../../lib/api/client";
+import cookie from "js-cookie";
 
 const GetQnAListContainer = () => {
   const router = useRouter();
@@ -11,15 +13,27 @@ const GetQnAListContainer = () => {
   const [list, setList] = useState();
 
   useEffect(() => {
+    const token = cookie.get("accessToken");
+    token ? (client.defaults.headers.common["Authorization"] = token) : router.push("/login");
     router.pathname === "/qna/mine"
-      ? getMyQnAList(page).then((res) => {
-          setTotal(res.data.totalOfPage);
-          res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setList(res.data.post);
-        })
-      : getQnAList(page).then((res) => {
-          setTotal(res.data.totalOfPage);
-          res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setList(res.data.post);
-        });
+      ? getMyQnAList(page)
+          .then((res) => {
+            setTotal(res.data.totalOfPage);
+            res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setList(res.data.post);
+          })
+          .catch(() => {
+            WarningToast("로그인이 필요합니다.");
+            router.push("/login");
+          })
+      : getQnAList(page)
+          .then((res) => {
+            setTotal(res.data.totalOfPage);
+            res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setList(res.data.post);
+          })
+          .catch(() => {
+            WarningToast("로그인이 필요합니다.");
+            router.push("/login");
+          });
   }, [page]);
 
   const prevPage = useCallback(() => {
