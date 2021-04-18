@@ -6,6 +6,11 @@ export async function GetMyProfile() {
   };
 }
 
+export async function login(loginData) {
+  const { data } = await client.post("/auth", loginData);
+  return data;
+}
+
 export async function EditProfile(marry, gender, disorder, age, name) {
   return await client.patch("/user", {
     marry: marry,
