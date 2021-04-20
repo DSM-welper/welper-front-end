@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import Comment from "../../components/QnA/Comment/Comment";
-import { getComment, addComment } from "../../lib/api/qna";
+import { getComment, addComment, deleteComment } from "../../lib/api/qna";
 import { WarningToast, SuccessToast, ErrorToast } from "../../lib/toast";
 
-const CommentContainer = () => {
+const CommentContainer = ({ getToken }) => {
   const router = useRouter();
   const id = router.query.id;
   const [commentData, setCommentData] = useState([]);
@@ -12,7 +12,7 @@ const CommentContainer = () => {
   const [commentInputs, setCommentInputs] = useState("");
 
   useEffect(() => {
-    console.log(router);
+    getToken();
     getComment(id, page)
       .then((res) => {
         res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setCommentData(res.data.list);
@@ -30,10 +30,25 @@ const CommentContainer = () => {
     setPage(page + 1);
   }, [page]);
 
+  const onDeleteComment = (commentId) => {
+    deleteComment(id, commentId)
+      .then(() => {
+        SuccessToast("댓글 삭제가 완료되었습니다.");
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      })
+      .catch(() => {
+        ErrorToast("삭제에 실패하였습니다. 다시 시도하세요.");
+      });
+  };
   const onSubmitComment = () => {
     addComment(id, { contents: commentInputs })
       .then(() => {
         SuccessToast("댓글 작성이 완료되었습니다.");
+        setTimeout(function () {
+          window.location.reload();
+        }, 300);
       })
       .catch(() => {
         ErrorToast("댓글 작성에 실패하였습니다. 다시 시도하세요.");
@@ -53,6 +68,7 @@ const CommentContainer = () => {
         commentData={commentData}
         onSubmitComment={onSubmitComment}
         onChangeComments={onChangeComments}
+        onDeleteComment={onDeleteComment}
       />
     </>
   );
