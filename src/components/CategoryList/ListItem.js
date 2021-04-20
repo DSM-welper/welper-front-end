@@ -2,7 +2,7 @@ import "./Category.scss";
 import { category_datail } from "../../assets/img";
 import Router from "next/router";
 
-const ListItem = ({ list, page }) => {
+const ListItem = ({ list }) => {
   const getDetail = (id) => {
     Router.push({
       pathname: "/welpare-detail",
@@ -22,7 +22,7 @@ const ListItem = ({ list, page }) => {
           >
             <p>{item.servNm}</p>
             <div className="content-box">
-              <span>{item.servDgst}</span>
+              <span>{item.servDgst.substring(0, 120)}</span>
             </div>
             <img src={category_datail} onClick={() => getDetail(item.servId)} />
           </div>

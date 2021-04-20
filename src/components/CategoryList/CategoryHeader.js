@@ -1,49 +1,43 @@
 import React, { useState, useEffect } from "react";
 import "./Category.scss";
+import { WarningToast } from "../../lib/toast";
 
 const CategoryHeader = (props) => {
   let [data, setData] = useState([]);
-  let [category, setCategory] = useState([]);
   let [isData, setIsData] = useState(false);
-
+  const dataChange = (e) => {
+    setData([...data, e.target.value]);
+  };
   const categoryData = () => {
+    if (data.length === 0) WarningToast("카테고리를 선택해 주세요");
+    else {
+      props.category(data);
+      setIsData(false);
+    }
+  };
+
+  const categoryReset = () => {
     let lifeType = document.getElementById("life");
     let type = document.getElementById("type");
     let characteristic = document.getElementById("characteristic");
     let obstacle = document.getElementById("obstacle");
     let desire = document.getElementById("desire");
-
-    setData([
-      ...data,
-      lifeType.options[lifeType.selectedIndex].value,
-      type.options[type.selectedIndex].value,
-      characteristic.options[characteristic.selectedIndex].value,
-      obstacle.options[obstacle.selectedIndex].value,
-      desire.options[desire.selectedIndex].value,
-    ]);
-    setCategory([
-      ...category,
-      lifeType.options[lifeType.selectedIndex].text,
-      type.options[type.selectedIndex].text,
-      characteristic.options[characteristic.selectedIndex].text,
-      obstacle.options[obstacle.selectedIndex].text,
-      desire.options[desire.selectedIndex].text,
-    ]);
+    lifeType.options[0].selected = true;
+    type.options[0].selected = true;
+    characteristic.options[0].selected = true;
+    obstacle.options[0].selected = true;
+    desire.options[0].selected = true;
+    setData([]);
     setIsData(true);
   };
-
   useEffect(() => {
     props.category(data);
-    if (isData) {
-      setData([]);
-      setIsData(false);
-    }
   }, [isData]);
 
   return (
     <>
       <div className="category-container">
-        <select className="select-box" id="life">
+        <select className="select-box" id="life" onChange={dataChange}>
           <option value="NONE">생애주기</option>
           <option value="INFANTS">영유아</option>
           <option value="CHILD">아동</option>
@@ -52,7 +46,7 @@ const CategoryHeader = (props) => {
           <option value="MIDDLEAGE">중장년</option>
           <option value="OLDAGE">노년</option>
         </select>
-        <select className="select-box" id="type">
+        <select className="select-box" id="type" onChange={dataChange}>
           <option value="NONE">가구 유형</option>
           <option value="SINGLEPARENTS">한부모</option>
           <option value="MULTICULTURE">다문화</option>
@@ -61,7 +55,11 @@ const CategoryHeader = (props) => {
           <option value="CHILDHEAD">소년소녀가장</option>
           <option value="SOLOOLD">독거노인</option>
         </select>
-        <select className="select-box" id="characteristic">
+        <select
+          className="select-box"
+          id="characteristic"
+          onChange={dataChange}
+        >
           <option value="NONE">대상 특성</option>
           <option value="WOMEN">여성</option>
           <option value="PREGNENT">임산부</option>
@@ -69,12 +67,12 @@ const CategoryHeader = (props) => {
           <option value="NATIONALMERIT">국가유공자</option>
           <option value="UNEMPLOYED">실업자</option>
         </select>
-        <select className="select-box" id="obstacle">
-          <option value="NONE">장애</option>
+        <select className="select-box" id="obstacle" onChange={dataChange}>
+          <option value="NONE">장애 정도</option>
           <option value="SERVE">심한</option>
           <option value="WEAK">약한</option>
         </select>
-        <select className="select-box" id="desire">
+        <select className="select-box" id="desire" onChange={dataChange}>
           <option value="NONE">욕구</option>
           <option value="SAFETY">안전</option>
           <option value="HEALTH">건강</option>
@@ -88,9 +86,18 @@ const CategoryHeader = (props) => {
           <option value="LAW">법</option>
           <option value="ELSE">기타</option>
         </select>
-        <button className="category-button" onClick={categoryData}>
-          검색
-        </button>
+        <div className="button-box">
+          <button onClick={categoryReset} className="category-button">
+            초기화
+          </button>
+          <button
+            className="category-button"
+            onClick={categoryData}
+            data-tooltip-text="재검색은 초기화 버튼을 누른 후에 검색해 주세요."
+          >
+            검색
+          </button>
+        </div>
       </div>
     </>
   );
