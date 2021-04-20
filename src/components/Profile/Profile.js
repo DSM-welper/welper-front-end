@@ -7,6 +7,13 @@ import { WarningToast } from "../../lib/toast";
 const Profile = ({ data, edit }) => {
   let [isMa, setMarry] = useState("");
   let [gender, setGender] = useState("");
+  let [editData, setEdit] = useState({
+    marry: "",
+    age: 0,
+    name: "",
+    disorder: false,
+    gender: "",
+  });
 
   useEffect(() => {
     switch (data.gender) {
@@ -29,31 +36,17 @@ const Profile = ({ data, edit }) => {
         return setMarry("비공개");
     }
   }, []);
-  const profileEdit = async () => {
-    let age = document.getElementById("age").value;
-    let name = document.getElementById("name").value;
-    let gender = document.getElementById("Gender");
-    let marry = document.getElementById("isMarry");
-    let disorder = document.getElementById("disorder");
-    let isDisorder = false;
-
-    if (disorder.options[disorder.selectedIndex].value === "true")
-      isDisorder = true;
-    else isDisorder = false;
-
-    if (disorder.options[disorder.selectedIndex].value === "null") {
-      WarningToast("정보를 다 기입해 주세요.", {
-        position: "top-right",
-        autoClose: 3000,
-      });
-    } else {
-      await edit(
-        marry.options[marry.selectedIndex].value,
-        gender.options[gender.selectedIndex].value,
-        isDisorder,
-        age,
-        name
-      );
+  const dataChange = (e) => {
+    const { id, value } = e.target;
+    setEdit({
+      ...editData,
+      [id]: value,
+    });
+  };
+  const profileEdit = () => {
+    if (editData.name == "") WarningToast("정보를 다 입력해 주세요. ");
+    else {
+      edit(editData);
     }
   };
 
@@ -74,23 +67,31 @@ const Profile = ({ data, edit }) => {
             으로 설정되어 있습니다.
           </p>
           <div className="profile-input-box">
-            <input placeholder="나이" id="age" />
-            <input placeholder="이름" id="name" />
+            <input placeholder="나이" id="age" onChange={dataChange} />
+            <input placeholder="이름" id="name" onChange={dataChange} />
           </div>
           <div className="profile-option-box">
-            <select className="profile-option" id="Gender">
+            <select
+              className="profile-option"
+              id="gender"
+              onChange={dataChange}
+            >
               <option value="null">성별</option>
               <option value="MEN">남자</option>
               <option value="WOMEN">여자</option>
               <option value="SECRET">비공개</option>
             </select>
-            <select className="profile-option" id="isMarry">
+            <select className="profile-option" id="marry" onChange={dataChange}>
               <option value="null">결혼 여부</option>
               <option value="DO">기혼</option>
               <option value="DONOT">미혼</option>
               <option value="SECRET">비공개</option>
             </select>
-            <select className="profile-option" id="disorder" required>
+            <select
+              className="profile-option"
+              id="disorder"
+              onChange={dataChange}
+            >
               <option value="null">장애 여부</option>
               <option value={false}>없음</option>
               <option value={true}>있음</option>

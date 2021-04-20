@@ -11,14 +11,8 @@ export async function login(loginData) {
   return data;
 }
 
-export async function EditProfile(marry, gender, disorder, age, name) {
-  return await client.patch("/user", {
-    marry: marry,
-    gender: gender,
-    disorder: disorder,
-    age: age,
-    name: name,
-  });
+export async function EditProfile(profileData) {
+  return await client.patch("/user", profileData);
 }
 
 export async function Email(mail) {

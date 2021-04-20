@@ -5,12 +5,12 @@ import client from "../../lib/api/client";
 import { SuccessToast } from "../../lib/toast";
 
 const ProfileContainer = ({ data }) => {
-  const editProfile = (marry, gender, disorder, age, name) => {
+  const editProfile = (profileData) => {
     const token = cookie.get("accessToken");
     token
       ? (client.defaults.headers.common["Authorization"] = token)
       : router.push("/login");
-    EditProfile(marry, gender, disorder, age, name).then((res) => {
+    EditProfile(profileData).then((res) => {
       if (res.status === 200)
         SuccessToast("프로필이 변경 되었습니다.", {
           position: "top-left",
