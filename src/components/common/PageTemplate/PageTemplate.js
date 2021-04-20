@@ -1,10 +1,10 @@
 import Header from "../Header/Header";
 import "./PageTemplate.scss";
 
-const PageTemplate = ({ children }) => {
+const PageTemplate = ({ children, handleSearch }) => {
   return (
     <>
-      <Header></Header>
+      <Header handleSearch={handleSearch}></Header>
       <div className="page-template">{children}</div>
     </>
   );

@@ -1,0 +1,79 @@
+$mainColor: #802457;
+
+.auth-container {
+  margin: 6rem 0 0 6rem;
+  h1 {
+    color: #fff0f0;
+    font-size: 2.55rem;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    text-align: center;
+  }
+
+  &-description {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    margin: 0.3rem 0 5rem 0;
+  }
+
+  &-input {
+    margin: 4rem 0;
+    label {
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .auth-input {
+      width: 27rem;
+      background-color: $mainColor;
+      margin: 0.3rem auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      border-radius: 0.4rem;
+
+      input {
+        margin-left: 0.8rem;
+        background-color: inherit;
+        border: none;
+        width: 100%;
+        outline: none;
+        color: white;
+        font-size: 1.05rem;
+
+        &::placeholder {
+          color: white;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  &-link {
+    color: white;
+    font-size: 0.8rem;
+    float: right;
+    font-weight: 400;
+    margin: 0.4rem 0;
+    cursor: pointer;
+  }
+
+  &-button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #7b0647;
+    font-size: 1.2rem;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    margin-top: 5rem;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+      transition: 0.3s;
+    }
+  }
+}
