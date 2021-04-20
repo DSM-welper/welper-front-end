@@ -1,16 +1,16 @@
+import React from "react";
 import "./Header.scss";
-import { welper_logo, search, user_color, triangle } from "../../../assets/img";
-import test from "./test.jpg";
-const Header = () => {
+import { welper_logo, welper_icon, triangle } from "../../../assets/img";
+import Searchbar from "../Searchbar/Searchbar";
+const Header = ({ handleSearch }) => {
   return (
     <div className="header-container">
       <img src={welper_logo} className="logo" />
 
       <div className="search-container">
-        <input placeholder="검색" />
-        <img src={search} />
+        <Searchbar handleSearch={handleSearch} />
         <div className="header-profile">
-          <img src={test} />
+          <img />
         </div>
         <img src={triangle} className="menu-img" />
       </div>

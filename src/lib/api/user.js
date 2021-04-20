@@ -6,6 +6,11 @@ export async function GetMyProfile() {
   };
 }
 
+export async function login(loginData) {
+  const { data } = await client.post("/auth", loginData);
+  return data;
+}
+
 export async function EditProfile(marry, gender, disorder, age, name) {
   return await client.patch("/user", {
     marry: marry,
@@ -14,4 +19,16 @@ export async function EditProfile(marry, gender, disorder, age, name) {
     age: age,
     name: name,
   });
+}
+
+export async function Email(mail) {
+  return await client.post("/mail", { mail: mail });
+}
+
+export async function AuthEmail(code, mail) {
+  return await client.patch("/mail", { authCode: code, mail: mail });
+}
+
+export async function SignUp(data) {
+  return await client.post("/auth/signup", data);
 }

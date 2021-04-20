@@ -1,51 +1,44 @@
 import { client } from "./client";
 
 export async function getQnAList(page) {
-  const { data } = await client.get(
-    process.env.NEXT_PUBLIC_APP_URL + `/post?page=${page}`
-  );
+  const { data } = await client.get(`/post?page=${page}`);
   return {
     data,
   };
 }
 
 export async function getMyQnAList(page) {
-  const { data } = await client.get(
-    process.env.NEXT_PUBLIC_APP_URL + `/post/mine?page=${page}`
-  );
+  const { data } = await client.get(`/post/mine?page=${page}`);
   return {
     data,
   };
 }
 
 export async function getQnADetail(id) {
-  const { data } = await client.get(
-    process.env.NEXT_PUBLIC_APP_URL + `/post/detail/${id}`
-  );
+  const { data } = await client.get(`/post/detail/${id}`);
   return {
     data,
   };
 }
 
 export async function getComment(id, page) {
-  const { data } = await client.get(
-    process.env.NEXT_PUBLIC_APP_URL + `/comments/${id}?page=${page}`
-  );
+  const { data } = await client.get(`/comments/${id}?page=${page}`);
   return {
     data,
   };
 }
 
 export async function addComment(id, content) {
-  const { data } = await client.post(
-    process.env.NEXT_PUBLIC_APP_URL + `/comments/${id}`,
-    content
-  );
+  const { data } = await client.post(`/comments/${id}`, content);
   return {
     data,
   };
 }
 
 export async function CreateQnA(postData) {
-  return await client.post(process.env.NEXT_PUBLIC_APP_URL + "/post", postData);
+  return await client.post("/post", postData);
+}
+
+export async function deleteComment(postId, commentId) {
+  return await client.delete(`/comments/${postId}/${commentId}`);
 }
