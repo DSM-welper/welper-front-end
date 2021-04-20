@@ -39,7 +39,7 @@ const Navbar = () => {
     <>
       <div className="nav-container">
         <div>
-          <Image src={qna_mock} alt="qna_mock" width={340} height={303} />
+          <img className="nav-container-image" src={qna_mock} alt="qna_mock" />
           <nav className="nav">
             <div className="nav-inner">
               {nav.map((n, index) => {
