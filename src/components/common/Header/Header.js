@@ -10,7 +10,7 @@ const Header = ({ handleSearch }) => {
       <div className="search-container">
         <Searchbar handleSearch={handleSearch} />
         <div className="header-profile">
-          <img src={welper_icon} />
+          <img />
         </div>
         <img src={triangle} className="menu-img" />
       </div>
