@@ -1,8 +1,8 @@
-import Profile from "../components/Profile/Profile";
 import { GetMyProfile } from "../lib/api/user";
+import ProfileContainer from "../containers/ProfileContainer/ProfileContainer";
 
 const MyProfile = ({ data }) => {
-  return <Profile data={data} />;
+  return <ProfileContainer data={data} />;
 };
 
 MyProfile.getInitialProps = async () => {
