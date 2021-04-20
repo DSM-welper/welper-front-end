@@ -41,7 +41,7 @@ const QnAWrite = () => {
   };
   return (
     <QnAPageTemplate>
-      <div className="select-box">
+      <div className="qna-select-box">
         <select className="qna-category" onChange={dataChange} name="category">
           <option>카테고리 </option>
           <option value="INFANTS">영유아</option>
