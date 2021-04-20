@@ -2,14 +2,18 @@ $mainColor: #802457;
 $text: #707070;
 
 .nav-container {
-  height: 100%;
+  height: 100vh;
   padding: 2.5rem 3rem;
   width: 32rem;
   display: flex;
   justify-content: center;
+  &-image {
+    width: 100%;
+    height: 30%;
+  }
   .nav {
     width: 100%;
-    height: 90%;
+    height: 64%;
     margin-top: 2.5rem;
     background-color: #80245720;
     border-radius: 1rem;

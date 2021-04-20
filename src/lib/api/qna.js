@@ -38,3 +38,7 @@ export async function addComment(id, content) {
 export async function CreateQnA(postData) {
   return await client.post("/post", postData);
 }
+
+export async function deleteComment(postId, commentId) {
+  return await client.delete(`/comments/${postId}/${commentId}`);
+}
