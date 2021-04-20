@@ -1,6 +1,6 @@
-import { CategoryView } from "../components";
+import CategorySearchContainer from "../containers/SearchContainer/CategorySearchContainer";
 
 const CategoryList = () => {
-  return <CategoryView />;
+  return <CategorySearchContainer />;
 };
 export default CategoryList;
