@@ -2,7 +2,7 @@ import React from "react";
 import { CommentItem, AddComment } from "./";
 import "./Comment.scss";
 
-const Comment = ({ page, prevPage, nextPage, commentData, onSubmitComment, onChangeComments }) => {
+const Comment = ({ page, prevPage, nextPage, commentData, onSubmitComment, onChangeComments, onDeleteComment }) => {
   return (
     <>
       <h1 className="qna-title">
@@ -11,7 +11,7 @@ const Comment = ({ page, prevPage, nextPage, commentData, onSubmitComment, onCha
       {commentData && commentData.length > 0 ? (
         <>
           {commentData.map((c, i) => {
-            return <CommentItem key={i} contents={c.comment} writer={c.writer} />;
+            return <CommentItem key={i} id={c.id} date={c.createdAt} contents={c.comment} writer={c.writer} onDeleteComment={onDeleteComment} />;
           })}
         </>
       ) : (
