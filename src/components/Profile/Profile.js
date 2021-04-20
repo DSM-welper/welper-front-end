@@ -44,7 +44,13 @@ const Profile = ({ data, edit }) => {
     });
   };
   const profileEdit = () => {
-    if (editData.name == "") WarningToast("정보를 다 입력해 주세요. ");
+    if (
+      editData.name == "" ||
+      editData.age == 0 ||
+      editData.gender == "" ||
+      editData.marry == ""
+    )
+      WarningToast("정보를 다 입력해 주세요. ");
     else {
       edit(editData);
     }
