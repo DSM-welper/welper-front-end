@@ -2,10 +2,9 @@ import "./Profile.scss";
 import PageTemplate from "../common/PageTemplate/PageTemplate";
 import { profileImg } from "../../assets/img";
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { EditProfile } from "../../lib/api/user";
-const Profile = ({ data }) => {
+import { WarningToast } from "../../lib/toast";
+
+const Profile = ({ data, edit }) => {
   let [isMa, setMarry] = useState("");
   let [gender, setGender] = useState("");
 
@@ -33,7 +32,7 @@ const Profile = ({ data }) => {
   const profileEdit = async () => {
     let age = document.getElementById("age").value;
     let name = document.getElementById("name").value;
-    let gender = document.getElementById("gender");
+    let gender = document.getElementById("Gender");
     let marry = document.getElementById("isMarry");
     let disorder = document.getElementById("disorder");
     let isDisorder = false;
@@ -43,34 +42,24 @@ const Profile = ({ data }) => {
     else isDisorder = false;
 
     if (disorder.options[disorder.selectedIndex].value === "null") {
-      toast.warning("정보를 다 기입해 주세요.", {
+      WarningToast("정보를 다 기입해 주세요.", {
         position: "top-right",
         autoClose: 3000,
       });
     } else {
-      await EditProfile(
+      await edit(
         marry.options[marry.selectedIndex].value,
         gender.options[gender.selectedIndex].value,
         isDisorder,
         age,
         name
-      ).then((res) => {
-        if (res.status === 200)
-          toast.success("프로필이 변경 되었습니다.", {
-            position: "top-left",
-            autoClose: 2000,
-          });
-        setTimeout(function () {
-          window.location.reload();
-        }, 2000);
-      });
+      );
     }
   };
 
   return (
     <div className="background-public">
       <PageTemplate>
-        <ToastContainer />
         <div className="profile-container">
           <div className="profile-header">프로필 설정</div>
           <img src={profileImg} className="profile-img" />
@@ -84,12 +73,12 @@ const Profile = ({ data }) => {
             </span>
             으로 설정되어 있습니다.
           </p>
-          <div className="input-box">
-            <input className="profile-input" placeholder="나이" id="age" />
-            <input className="profile-input" placeholder="이름" id="name" />
+          <div className="profile-input-box">
+            <input placeholder="나이" id="age" />
+            <input placeholder="이름" id="name" />
           </div>
           <div className="profile-option-box">
-            <select className="profile-option" id="gender">
+            <select className="profile-option" id="Gender">
               <option value="null">성별</option>
               <option value="MEN">남자</option>
               <option value="WOMEN">여자</option>
