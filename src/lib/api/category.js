@@ -1,21 +1,21 @@
-import getClientAccessToken from "./client";
+import { client } from "./client";
 const qs = require("qs");
 export async function AllCategory(numOfPage) {
-  const { data } = await getClientAccessToken.get("/category", numOfPage);
+  const { data } = await client.get("/category", numOfPage);
   return {
     data,
   };
 }
 
 export async function CategoryDetail(id) {
-  const { data } = await getClientAccessToken.get(`/category/detail/${id}`);
+  const { data } = await client.get(`/category/detail/${id}`);
   return {
     data,
   };
 }
 
 export async function CategorySearch(content, numOfPage) {
-  const { data } = await getClientAccessToken.get("/category/search", {
+  const { data } = await client.get("/category/search", {
     content,
     numOfPage,
   });
@@ -25,7 +25,7 @@ export async function CategorySearch(content, numOfPage) {
 }
 
 export async function CategoryTag(numOfPage, categoryName) {
-  const { data } = await getClientAccessToken.get("/category/tag", {
+  const { data } = await client.get("/category/tag", {
     params: {
       numOfPage: numOfPage,
       categoryName: categoryName,
