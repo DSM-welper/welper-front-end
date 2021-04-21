@@ -9,14 +9,14 @@ const Navbar = () => {
     {
       name: "메인으로",
       img: home,
-      link: "/first-view",
+      link: "/",
       width: 25,
       height: 21,
     },
     {
       name: "프로필 설정",
       img: pencil,
-      link: "/profile-setting",
+      link: "/my-profile",
       width: 23,
       height: 21,
     },
