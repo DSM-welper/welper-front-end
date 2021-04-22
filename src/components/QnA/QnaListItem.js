@@ -14,9 +14,7 @@ const QnAListItem = ({ title, writer, date, id }) => {
           </div>
           <p>{writer}</p>
           <div>
-            <p>
-              {date[0]}.{date[1]}.{date[2]}
-            </p>
+            <p>{date}</p>
             <Image src={delete_icon} width={15} height={15} />
           </div>
         </div>
