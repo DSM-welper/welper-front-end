@@ -26,3 +26,7 @@ export async function AuthEmail(code, mail) {
 export async function SignUp(data) {
   return await client.post("/auth/signup", data);
 }
+
+export async function refreshToken() {
+  return await client.patch("/auth");
+}

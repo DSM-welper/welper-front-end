@@ -3,8 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import "./Navbar.scss";
 import { qna_mock, home, pencil, laptop, arrow_out } from "../../../assets/img";
+import cookie from "js-cookie";
+import { useRouter } from "next/router";
+import { SuccessToast } from "../../../lib/toast";
 
 const Navbar = () => {
+  const router = useRouter();
   const nav = [
     {
       name: "메인으로",
@@ -30,9 +34,15 @@ const Navbar = () => {
     {
       name: "로그아웃",
       img: arrow_out,
-      link: "/",
+      link: "/qna",
       width: 23,
       height: 8,
+      function: () => {
+        cookie.remove("accessToken");
+        cookie.remove("refreshToken");
+        router.push("/");
+        SuccessToast("로그아웃 되었습니다.");
+      },
     },
   ];
   return (
@@ -45,7 +55,7 @@ const Navbar = () => {
               {nav.map((n, index) => {
                 return (
                   <Link href={n.link} key={index} className="nav-link">
-                    <div className="nav-box">
+                    <div className="nav-box" onClick={n.function ? n.function : null}>
                       <Image src={n.img} width={n.width} height={n.height} />
                       <h5>{n.name}</h5>
                     </div>
