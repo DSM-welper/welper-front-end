@@ -9,7 +9,7 @@ const FeatureItem = ({ name, description }) => {
       <Image src={name === "프로필 변경" ? first_user_icon : question_circle} alt="icon" width={26} height={24}></Image>
       <h2>{name}</h2>
       <p className="description-text">{description}</p>
-      <Link href={name === "프로필 변경" ? "/profile-setting" : "/qna"}>
+      <Link href={name === "프로필 변경" ? "/my-profile" : "/qna"}>
         <button className="main-button">이동하기</button>
       </Link>
     </div>

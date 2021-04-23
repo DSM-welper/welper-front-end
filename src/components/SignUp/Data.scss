@@ -142,15 +142,15 @@ $gender: "../../assets/img/gender.png";
   width: 47%;
   font-size: 11px;
 }
-#gender {
+#Gender {
   background-image: url($gender);
   background-size: 10% 1.2rem;
   background-position: 10% 50%;
   background-repeat: no-repeat;
   padding-left: 2.8rem;
 }
-#marry {
-  @extend #gender;
+#Marry {
+  @extend #Gender;
   background-image: url($user);
 }
 .second-arrow {

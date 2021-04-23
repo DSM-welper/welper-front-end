@@ -19,7 +19,7 @@ const QnAPageTemplate = ({ children }) => {
       img: add_qna_color,
       width: 25,
       height: 25,
-      link: "/add-qna",
+      link: "/qna/write",
     },
   ];
   return (
