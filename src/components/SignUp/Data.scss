@@ -142,16 +142,21 @@ $gender: "../../assets/img/gender.png";
   width: 47%;
   font-size: 11px;
 }
-#Gender {
+.second-gender {
+  @extend .second-option;
   background-image: url($gender);
   background-size: 10% 1.2rem;
   background-position: 10% 50%;
   background-repeat: no-repeat;
   padding-left: 2.8rem;
 }
-#Marry {
-  @extend #Gender;
+.second-marry {
+  @extend .second-option;
   background-image: url($user);
+  background-size: 10% 1.2rem;
+  background-position: 10% 50%;
+  background-repeat: no-repeat;
+  padding-left: 2.8rem;
 }
 .second-arrow {
   position: absolute;

@@ -46,7 +46,7 @@ const SignUpData = ({ inputData, selectData, getSignUp }) => {
             <h4 id="title-gender">Gender</h4>
           </div>
           <div className="second-box">
-            <select className="second-option" id="Marry" onChange={selectData}>
+            <select className="second-marry" id="marry" onChange={selectData}>
               <option>결혼 여부를 선택해 주세요.</option>
               <option value="SECRET">비공개</option>
               <option value="DONOT">미혼</option>
@@ -54,7 +54,7 @@ const SignUpData = ({ inputData, selectData, getSignUp }) => {
             </select>
             <div className="second-arrow"></div>
 
-            <select className="second-option" id="Gender" onChange={selectData}>
+            <select className="second-gender" id="gender" onChange={selectData}>
               <option>성별을 선택해 주세요.</option>
               <option value="SECRET">비공개</option>
               <option value="WOMEN">여자</option>
