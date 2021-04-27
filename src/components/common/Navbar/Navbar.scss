@@ -1,0 +1,52 @@
+$mainColor: #802457;
+$text: #707070;
+
+.nav-container {
+  height: 100vh;
+  padding: 2.5rem 3rem;
+  width: 32rem;
+  display: flex;
+  justify-content: center;
+  &-image {
+    width: 100%;
+    height: 30%;
+  }
+  .nav {
+    width: 100%;
+    height: 64%;
+    margin-top: 2.5rem;
+    background-color: #80245720;
+    border-radius: 1rem;
+    padding: 3.5rem 3rem;
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 60%;
+    }
+    &-box {
+      display: flex;
+      cursor: pointer;
+      img {
+        opacity: 0.15;
+        &:hover {
+          opacity: 1;
+          transition: 0.3s;
+        }
+      }
+
+      h5 {
+        color: $text;
+        font-size: 1.17rem;
+        font-weight: 300;
+        padding-left: 2rem;
+
+        &:hover {
+          color: $mainColor;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
