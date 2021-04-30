@@ -1,0 +1,77 @@
+$email: "../../assets/img/email.png";
+$pwd: "../../assets/img/lock.png";
+
+.sign-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 72%;
+  margin-left: 8rem;
+  height: 45rem;
+  h1 {
+    color: #fff0f0;
+    font-size: 35px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    margin-bottom: 0.4rem;
+  }
+  p {
+    font-weight: 300;
+    color: #ffffff;
+  }
+  a {
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: right;
+    margin-top: 1rem;
+  }
+  button {
+    margin-top: 5rem;
+    width: 80%;
+    height: 3.5rem;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    font-size: 20px;
+    background-color: #7b0647;
+    color: white;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 2rem;
+  height: 10rem;
+  h4 {
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+    font-size: large;
+  }
+  input {
+    outline: none;
+    border: none;
+    background-color: #802457;
+    color: white;
+    font-weight: 400;
+    height: 3rem;
+    border-radius: 0.4rem;
+    padding-left: 3.5rem;
+    background-image: url($email);
+    background-repeat: no-repeat;
+    background-size: 5% 1.2rem;
+    background-position: 5% 50%;
+    font-size: 15px;
+    &::placeholder {
+      color: white;
+      font-weight: 300;
+      font-size: 15px;
+    }
+  }
+}

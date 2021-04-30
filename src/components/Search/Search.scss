@@ -1,0 +1,37 @@
+$text: #525252;
+$description: #707070;
+
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 4rem 0;
+  justify-content: space-between;
+}
+
+.search-box {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0px 10px 30px #70707027;
+  padding: 1.5rem;
+  width: 45%;
+  height: 100%;
+  margin: 2.5rem 0 1rem 0;
+  &-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: $text;
+    h2 {
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 0.8rem;
+      margin-left: 1rem;
+    }
+  }
+  .description {
+    color: $description;
+  }
+}
