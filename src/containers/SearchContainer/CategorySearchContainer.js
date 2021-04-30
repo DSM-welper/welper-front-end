@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ListItem, ListDefault, CategoryHedaer } from "../../components";
 import { PageTemplate } from "../../components/common";
 import { CategoryTag } from "../../lib/api/category";
-import { WarningToast } from "../../lib/toast";
+import { WarningToast, ErrorToast } from "../../lib/toast";
 
 const CategorySearchContainer = () => {
   let [getData, setGetData] = useState([]);
@@ -23,17 +23,28 @@ const CategorySearchContainer = () => {
   }, [getData]);
 
   const getSearch = async () => {
-    const categoryList = await (await CategoryTag(page, getData)).data;
-    setList(categoryList.servList);
-    setTotal(categoryList.toTalPage);
-    if (categoryList) setIsDefault(false);
+    await CategoryTag(page, getData)
+      .then((list) => {
+        setList(list.data.servList);
+        setTotal(list.data.toTalPage);
+        setIsDefault(false);
+      })
+      .catch((err) => {
+        if (err.response.data.code === "NON_EXIST_PAGE")
+          ErrorToast("검색 결과가 없습니다.");
+      });
     setPage((page) => page + 1);
   };
 
   const scrollPage = async () => {
-    const list = await (await CategoryTag(page, getData)).data;
-    setList(listData.concat(list.servList));
-    setPage((page) => page + 1);
+    await CategoryTag(page, getData)
+      .then((list) => {
+        setList(listData.concat(list.data.servList));
+        setPage((page) => page + 1);
+      })
+      .catch((err) => {
+        console.log(err.response.code);
+      });
   };
 
   const infiniteScroll = () => {
