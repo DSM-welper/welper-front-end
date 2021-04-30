@@ -5,7 +5,7 @@ import Router from "next/router";
 const ListItem = ({ list }) => {
   const getDetail = (id) => {
     Router.push({
-      pathname: "/welpare-detail",
+      pathname: "/welper-detail",
       query: { id },
     });
   };

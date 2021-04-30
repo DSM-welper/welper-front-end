@@ -11,7 +11,7 @@ const SecondScreen = ({ items }) => {
         {items && items.length > 0 ? (
           <article>
             {items.map((item, i) => {
-              return <RecommendItem key={i} title={item.servNm} description={item.servDgst} category={item.jurOrgNm} />;
+              return <RecommendItem key={i} id={item.servId} title={item.servNm} description={item.servDgst} category={item.jurOrgNm} />;
             })}
           </article>
         ) : (
