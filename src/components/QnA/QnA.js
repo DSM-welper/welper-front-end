@@ -3,14 +3,14 @@ import "./QnA.scss";
 import QnAPageTemplate from "../common/QnAPageTemplate/QnAPageTemplate";
 import NotFound from "../FirstView/NotFound";
 
-const QnA = ({ postList, prevPage, nextPage, page }) => {
+const QnA = ({ postList, prevPage, nextPage, page, onDeletePost }) => {
   return (
     <>
       <QnAPageTemplate>
         {postList && postList.length > 0 ? (
           <article>
             {postList.map((p, i) => {
-              return <QnAListItem key={i} id={p.id} title={p.title} writer={p.writer} date={p.creatAt} />;
+              return <QnAListItem key={i} id={p.id} title={p.title} writer={p.writer} date={p.creatAt} onDeletePost={onDeletePost} />;
             })}
           </article>
         ) : (

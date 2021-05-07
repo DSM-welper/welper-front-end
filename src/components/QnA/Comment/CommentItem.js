@@ -4,7 +4,7 @@ import { confirmAlert } from "../../../lib/sweetAlert";
 
 const CommentItem = ({ id, contents, writer, date, onDeleteComment }) => {
   const onRemoveComment = () => {
-    confirmAlert(contents, "해당 글을 삭제하시겠습니까?", "warning", () => onDeleteComment(id));
+    confirmAlert(contents, "해당 댓글을 삭제하시겠습니까?", "warning", () => onDeleteComment(id));
   };
   return (
     <div className="comment">
