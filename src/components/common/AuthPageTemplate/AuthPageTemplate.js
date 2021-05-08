@@ -13,7 +13,7 @@ const AuthPageTemplate = ({ children, secession }) => {
           {secession ? (
             <>
               <p className="auth-description">
-                회원 탈퇴 시메일주소, 성별, 나이, 장애 여부 등 회원정보가 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다.
+                회원 탈퇴 시 메일주소, 성별, 나이, 장애 여부 등 회원정보가 모두 삭제되며, 삭제된 데이터는 복구되지 않습니다.
               </p>
               <p className="auth-description">그래도 Welper를 탈퇴를 진행하시겠습니까?</p>
             </>
