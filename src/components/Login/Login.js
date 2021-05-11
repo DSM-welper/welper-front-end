@@ -27,7 +27,7 @@ const Login = ({ onSubmitLogin, onChangeLoginInput }) => {
               <input placeholder="비밀번호를 입력하세요" type="password" name="password" onChange={onChangeLoginInput} />
             </div>
           </label>
-          <Link href="sign-up">
+          <Link href="sign-up/email">
             <p className="auth-container-link">
               아직 <strong>계정이 없으신가요?</strong>
             </p>

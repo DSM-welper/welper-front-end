@@ -8,10 +8,10 @@ const SecondScreen = ({ items }) => {
   return (
     <div className="second-container">
       <section>
-        {items && items.length > 0 ? (
+        {!(items === "INVALID_TOKEN") && items.length > 0 ? (
           <article>
             {items.map((item, i) => {
-              return <RecommendItem key={i} title={item.servNm} description={item.servDgst} category={item.jurOrgNm} />;
+              return <RecommendItem key={i} id={item.servId} title={item.servNm} description={item.servDgst} category={item.jurOrgNm} />;
             })}
           </article>
         ) : (

@@ -15,7 +15,7 @@ const CommentContainer = ({ getToken }) => {
     getToken();
     getComment(id, page)
       .then((res) => {
-        res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setCommentData(res.data.list);
+        if (!res.data.totalOfPage < page) setCommentData(res.data.list);
       })
       .catch((err) => {
         console.log(err);

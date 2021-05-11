@@ -143,6 +143,7 @@ $text: #707070;
   padding: 2rem 2.3rem;
   border-radius: 1.3rem;
   background-color: white;
+  cursor: pointer;
 
   h2 {
     color: $mainColor;
@@ -162,6 +163,11 @@ $text: #707070;
     height: 1.8rem;
     font-size: 0.7rem;
     float: right;
+  }
+
+  &:hover {
+    background-color: #f8edf3;
+    transition: 0.4s;
   }
 }
 

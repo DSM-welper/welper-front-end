@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import QnA from "../../components/QnA/QnA";
 import { WarningToast } from "../../lib/toast";
-import { getQnAList, getMyQnAList } from "../../lib/api/qna";
+import { getQnAList, getMyQnAList, deletePost } from "../../lib/api/qna";
 import client from "../../lib/api/client";
 import cookie from "js-cookie";
 
@@ -36,6 +36,19 @@ const GetQnAListContainer = () => {
           });
   }, [page]);
 
+  const onDeletePost = (postId) => {
+    deletePost(postId)
+      .then(() => {
+        SuccessToast("글 삭제가 완료되었습니다.");
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      })
+      .catch(() => {
+        ErrorToast("삭제에 실패하였습니다. 다시 시도하세요.");
+      });
+  };
+
   const prevPage = useCallback(() => {
     page <= 0 ? WarningToast("가장 최근 페이지입니다.") : setPage(page - 1);
   }, [page]);
@@ -47,7 +60,7 @@ const GetQnAListContainer = () => {
 
   return (
     <>
-      <QnA postList={list} prevPage={prevPage} nextPage={nextPage} page={page} />
+      <QnA postList={list} prevPage={prevPage} nextPage={nextPage} page={page} onDeletePost={onDeletePost} />
     </>
   );
 };

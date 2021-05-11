@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/style/global.scss"
 import { FirstView } from "../components/index";
 import { getRecommendList } from "../lib/api/recommend";
 
