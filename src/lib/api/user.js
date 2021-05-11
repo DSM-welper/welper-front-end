@@ -31,6 +31,6 @@ export async function refreshToken() {
   return await client.patch("/auth");
 }
 
-export async function secession() {
-  return await client.delete("/auth");
+export async function secession(password) {
+  return await client.delete(`/auth?password=${password}`);
 }

@@ -7,7 +7,7 @@ const SecessionContainer = () => {
   const [password, setPassword] = useChangeInput({ password: "" });
 
   const onMemberSecession = () => {
-    secession(password)
+    secession(password.password)
       .then(() => {
         SuccessToast("탈퇴가 완료되었습니다.");
       })

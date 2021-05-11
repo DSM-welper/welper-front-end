@@ -16,7 +16,7 @@ const MemberSecession = ({ setPassword, onMemberSecession }) => {
         onMemberSecession();
       }
     );
-  }, []);
+  }, [setPassword]);
   return (
     <AuthPageTemplate secession={true}>
       <div className="auth-container">
