@@ -8,8 +8,8 @@ export const confirmAlert = (title, subTitle, icon, requestFunction) => {
     showCancelButton: true,
     confirmButtonColor: "#de2626",
     cancelButtonColor: "#022796",
-    confirmButtonText: "삭제",
-    cancelButtonText: "취소",
+    confirmButtonText: title === "잠깐!" ? "네, 탈퇴하겠습니다." : "삭제",
+    cancelButtonText: title === "잠깐!" ? "아니요, 취소할게요." : "취소",
   }).then((result) => {
     if (result.value) {
       requestFunction();
