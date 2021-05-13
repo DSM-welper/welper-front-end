@@ -3,13 +3,14 @@ import { useRouter } from "next/router";
 import Comment from "../../components/QnA/Comment/Comment";
 import { getComment, addComment, deleteComment } from "../../lib/api/qna";
 import { WarningToast, SuccessToast, ErrorToast } from "../../lib/toast";
+import useChangeInput from "../../lib/hooks/useChangeInput";
 
 const CommentContainer = ({ getToken }) => {
   const router = useRouter();
   const id = router.query.id;
   const [commentData, setCommentData] = useState([]);
   const [page, setPage] = useState(1);
-  const [commentInputs, setCommentInputs] = useState("");
+  const [commentInputs, setCommentInputs] = useChangeInput({ contents: "" });
 
   useEffect(() => {
     getToken();
@@ -43,7 +44,7 @@ const CommentContainer = ({ getToken }) => {
       });
   };
   const onSubmitComment = () => {
-    addComment(id, { contents: commentInputs })
+    addComment(id, commentInputs)
       .then(() => {
         SuccessToast("댓글 작성이 완료되었습니다.");
         setTimeout(function () {
@@ -67,7 +68,7 @@ const CommentContainer = ({ getToken }) => {
         page={page}
         commentData={commentData}
         onSubmitComment={onSubmitComment}
-        onChangeComments={onChangeComments}
+        onChangeComments={setCommentInputs}
         onDeleteComment={onDeleteComment}
       />
     </>
