@@ -44,21 +44,20 @@ const CommentContainer = ({ getToken }) => {
       });
   };
   const onSubmitComment = () => {
-    addComment(id, commentInputs)
-      .then(() => {
-        SuccessToast("댓글 작성이 완료되었습니다.");
-        setTimeout(function () {
-          window.location.reload();
-        }, 300);
-      })
-      .catch(() => {
-        ErrorToast("댓글 작성에 실패하였습니다. 다시 시도하세요.");
-      });
-  };
-
-  const onChangeComments = (e) => {
-    const value = e.target.value;
-    setCommentInputs(value);
+    if (!(commentInputs.contents === "")) {
+      addComment(id, commentInputs)
+        .then(() => {
+          SuccessToast("댓글 작성이 완료되었습니다.");
+          setTimeout(function () {
+            window.location.reload();
+          }, 300);
+        })
+        .catch(() => {
+          ErrorToast("댓글 작성에 실패하였습니다. 다시 시도하세요.");
+        });
+    } else {
+      WarningToast("댓글을 입력하세요.")
+    }
   };
   return (
     <>
