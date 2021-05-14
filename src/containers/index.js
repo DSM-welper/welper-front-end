@@ -5,3 +5,4 @@ export { default as KeywordSearch } from "./SearchContainer/KeywordSearchContain
 export { default as SignUpEmail } from "./AuthContainer/EmailContainer";
 export { default as SignUpAuth } from "./AuthContainer/AuthContainer";
 export { default as SignUpData } from "./AuthContainer/DataContainer";
+export { default as MemberSecession } from "./AuthContainer/SecessionContainer";

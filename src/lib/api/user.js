@@ -11,14 +11,8 @@ export async function login(loginData) {
   return data;
 }
 
-export async function EditProfile(marry, gender, disorder, age, name) {
-  return await client.patch("/user", {
-    marry: marry,
-    gender: gender,
-    disorder: disorder,
-    age: age,
-    name: name,
-  });
+export async function EditProfile(profileData) {
+  return await client.patch("/user", profileData);
 }
 
 export async function Email(mail) {
@@ -31,4 +25,12 @@ export async function AuthEmail(code, mail) {
 
 export async function SignUp(data) {
   return await client.post("/auth/signup", data);
+}
+
+export async function refreshToken() {
+  return await client.patch("/auth");
+}
+
+export async function secession(password) {
+  return await client.delete(`/auth?password=${password}`);
 }

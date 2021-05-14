@@ -1,4 +1,4 @@
-$img: "../../assets/img/category_menu.png";
+$menu: "../../assets/img/category_menu.png";
 
 .profile-container {
   display: flex;
@@ -31,21 +31,21 @@ $img: "../../assets/img/category_menu.png";
   margin-top: 2rem;
 }
 
-.input-box {
+.profile-input-box {
   display: flex;
   justify-content: space-around;
-}
-.profile-input {
-  width: 46%;
-  height: 2rem;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #802457;
-  color: #802457;
-  margin-top: 1.5rem;
-  font-size: 15px;
-  &::placeholder {
+  input {
+    width: 46%;
+    height: 2rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #802457;
     color: #802457;
+    margin-top: 1.5rem;
+    font-size: 15px;
+    &::placeholder {
+      color: #802457;
+    }
   }
 }
 
@@ -66,7 +66,7 @@ $img: "../../assets/img/category_menu.png";
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background: url($img) no-repeat 90%;
+  background: url($menu) no-repeat 90%;
   background-size: 7%;
 }
 

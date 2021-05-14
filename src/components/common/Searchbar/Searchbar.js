@@ -12,7 +12,7 @@ const Searchbar = ({ handleSearch }) => {
       <img
         src={search}
         onClick={() => {
-          handleSearch();
+          if (router.pathname.indexOf("search") != -1) handleSearch();
           content
             ? router.push({
                 pathname: `/search/${content}`,
