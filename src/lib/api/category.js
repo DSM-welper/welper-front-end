@@ -25,7 +25,7 @@ export async function CategorySearch(content, numOfPage) {
 }
 
 export async function CategoryTag(numOfPage, categoryName) {
-  const { data } = await client.get("/category/tag", {
+  return await client.get("/category/tag", {
     params: {
       numOfPage: numOfPage,
       categoryName: categoryName,
@@ -34,7 +34,4 @@ export async function CategoryTag(numOfPage, categoryName) {
       return qs.stringify(params, { arrayFormat: "repeat" });
     },
   });
-  return {
-    data,
-  };
 }
