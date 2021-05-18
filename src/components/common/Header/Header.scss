@@ -18,9 +18,11 @@
   h5 {
     font-weight: 600;
     color: gray;
+    cursor: pointer;
   }
   h6 {
     color: #802457;
+    cursor: pointer;
   }
 }
 
@@ -33,6 +35,7 @@
     width: 8%;
     height: 8%;
     margin-top: 1rem;
+    cursor: pointer;
   }
 
   .search-container {
@@ -49,7 +52,6 @@
     }
     img {
       height: 55%;
-      cursor: pointer;
     }
     .header-profile {
       overflow: hidden;
