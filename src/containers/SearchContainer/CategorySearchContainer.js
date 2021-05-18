@@ -5,8 +5,6 @@ import { CategoryTag } from "../../lib/api/category";
 import { WarningToast } from "../../lib/toast";
 import { useInView } from "react-intersection-observer";
 
-import { category_datail } from "../../assets/img";
-
 const CategorySearchContainer = () => {
   let [getData, setGetData] = useState([]);
   let [isDefault, setIsDefault] = useState(true);
