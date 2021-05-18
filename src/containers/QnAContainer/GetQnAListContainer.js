@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import QnA from "../../components/QnA/QnA";
-import { WarningToast } from "../../lib/toast";
+import { WarningToast, ErrorToast, SuccessToast } from "../../lib/toast";
 import { getQnAList, getMyQnAList, deletePost } from "../../lib/api/qna";
 import client from "../../lib/api/client";
 import cookie from "js-cookie";
@@ -40,9 +40,7 @@ const GetQnAListContainer = () => {
     deletePost(postId)
       .then(() => {
         SuccessToast("글 삭제가 완료되었습니다.");
-        setTimeout(() => {
-          window.location.reload();
-        }, 300);
+        router.push("/qna");
       })
       .catch(() => {
         ErrorToast("삭제에 실패하였습니다. 다시 시도하세요.");
