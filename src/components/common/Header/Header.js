@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./Header.scss";
 import { welper_logo, welper_icon, triangle } from "../../../assets/img";
 import Searchbar from "../Searchbar/Searchbar";
@@ -6,6 +6,7 @@ import Router from "next/router";
 import cookie from "js-cookie";
 import { SuccessToast } from "../../../lib/toast";
 import { GetMyProfile } from "../../../lib/api/user";
+import client from "../../../lib/api/client";
 
 const Header = ({ handleSearch }) => {
   let [name, setName] = useState("");
@@ -16,7 +17,16 @@ const Header = ({ handleSearch }) => {
       Router.push("/login");
     }, 2000);
   };
+
+  const getToken = useCallback(() => {
+    const token = cookie.get("accessToken");
+    token
+      ? (client.defaults.headers.common["Authorization"] = token)
+      : router.push("/login");
+  }, []);
+  
   useEffect(() => {
+    getToken();
     onMenu();
     GetMyProfile().then((res) => {
       setName(res.data.name);
@@ -46,6 +56,7 @@ const Header = ({ handleSearch }) => {
           <img src={welper_icon} id="img-menu" />
           <h5>{name}</h5>
           <h5 onClick={() => Router.push("/my-profile")}>프로필 설정</h5>
+          <h5 onClick={() => Router.push("/my-page")}>마이페이지</h5>
           <h6 onClick={logout}>로그아웃</h6>
         </div>
       </div>
