@@ -7,3 +7,4 @@ export { default as CategoryHedaer } from "./CategoryList/CategoryHeader";
 export { default as ListItem } from "./CategoryList/ListItem";
 export { default as ListDefault } from "./CategoryList/DefaultPage";
 export { default as MemberSecession } from "./MemberSecession/MemberSecession";
+export { default as MyPage } from "./Profile/MyPage";

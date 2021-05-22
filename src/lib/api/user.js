@@ -34,3 +34,8 @@ export async function refreshToken() {
 export async function secession(password) {
   return await client.delete(`/auth?password=${password}`);
 }
+
+export async function BookMark(id) {
+  const servId = id;
+  return await client.post(`/category/bookMark/${servId}`);
+}

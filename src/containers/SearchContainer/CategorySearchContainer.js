@@ -58,7 +58,15 @@ const CategorySearchContainer = () => {
           <ListDefault />
         ) : (
           <div className="list-container" id="list">
-            <ListItem list={listData} ref={ref} />
+            {listData.map((item, idx) => (
+              <ListItem
+                list={item}
+                ref={ref}
+                length={listData.length}
+                idx={idx}
+                isBookMark={item.isBookMark}
+              />
+            ))}
           </div>
         )}
       </PageTemplate>
