@@ -23,7 +23,7 @@ const KeywordSearchContainer = ({ list, keyword }) => {
     console.log(keyword);
     router.push({
       pathname: `/search/${keyword}`,
-      query: { page: page, content: keyword },
+      query: { page: page },
     });
   }, [page, keyword]);
 

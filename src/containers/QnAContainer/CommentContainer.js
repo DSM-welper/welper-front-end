@@ -3,19 +3,20 @@ import { useRouter } from "next/router";
 import Comment from "../../components/QnA/Comment/Comment";
 import { getComment, addComment, deleteComment } from "../../lib/api/qna";
 import { WarningToast, SuccessToast, ErrorToast } from "../../lib/toast";
+import useChangeInput from "../../lib/hooks/useChangeInput";
 
 const CommentContainer = ({ getToken }) => {
   const router = useRouter();
   const id = router.query.id;
   const [commentData, setCommentData] = useState([]);
   const [page, setPage] = useState(1);
-  const [commentInputs, setCommentInputs] = useState("");
+  const [commentInputs, setCommentInputs] = useChangeInput({ contents: "" });
 
   useEffect(() => {
     getToken();
     getComment(id, page)
       .then((res) => {
-        res.data.totalOfPage < page ? WarningToast("더 이상 게시물이 없습니다.") : setCommentData(res.data.list);
+        if (!res.data.totalOfPage < page) setCommentData(res.data.list);
       })
       .catch((err) => {
         console.log(err);
@@ -43,21 +44,20 @@ const CommentContainer = ({ getToken }) => {
       });
   };
   const onSubmitComment = () => {
-    addComment(id, { contents: commentInputs })
-      .then(() => {
-        SuccessToast("댓글 작성이 완료되었습니다.");
-        setTimeout(function () {
-          window.location.reload();
-        }, 300);
-      })
-      .catch(() => {
-        ErrorToast("댓글 작성에 실패하였습니다. 다시 시도하세요.");
-      });
-  };
-
-  const onChangeComments = (e) => {
-    const value = e.target.value;
-    setCommentInputs(value);
+    if (!(commentInputs.contents === "")) {
+      addComment(id, commentInputs)
+        .then(() => {
+          SuccessToast("댓글 작성이 완료되었습니다.");
+          setTimeout(function () {
+            window.location.reload();
+          }, 300);
+        })
+        .catch(() => {
+          ErrorToast("댓글 작성에 실패하였습니다. 다시 시도하세요.");
+        });
+    } else {
+      WarningToast("댓글을 입력하세요.")
+    }
   };
   return (
     <>
@@ -67,7 +67,7 @@ const CommentContainer = ({ getToken }) => {
         page={page}
         commentData={commentData}
         onSubmitComment={onSubmitComment}
-        onChangeComments={onChangeComments}
+        onChangeComments={setCommentInputs}
         onDeleteComment={onDeleteComment}
       />
     </>

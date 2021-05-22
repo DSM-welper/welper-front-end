@@ -4,14 +4,12 @@ import { login } from "../../lib/api/user";
 import { ErrorToast, SuccessToast } from "../../lib/toast";
 import cookie from "js-cookie";
 import { useRouter } from "next/router";
+import useChangeInput from "../../lib/hooks/useChangeInput";
 
 const LoginContainer = () => {
   const router = useRouter();
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
-  const onChangeLoginInput = (e) => {
-    const { value, name } = e.target;
-    setLoginData((prev) => ({ ...prev, [name]: value }));
-  };
+  const [loginData, setLoginData] = useChangeInput({ email: "", password: "" });
+
   const onSubmitLogin = () => {
     login(loginData)
       .then((res) => {
@@ -26,7 +24,7 @@ const LoginContainer = () => {
   };
   return (
     <>
-      <Login onSubmitLogin={onSubmitLogin} onChangeLoginInput={onChangeLoginInput} />
+      <Login onSubmitLogin={onSubmitLogin} onChangeLoginInput={setLoginData} />
     </>
   );
 };

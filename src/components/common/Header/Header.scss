@@ -12,15 +12,17 @@
   border: 1px #0000001e;
   z-index: 10;
   #img-menu {
-    width: 40%;
+    max-width: 40%;
     height: 3.5rem;
   }
   h5 {
     font-weight: 600;
     color: gray;
+    cursor: pointer;
   }
   h6 {
     color: #802457;
+    cursor: pointer;
   }
 }
 
@@ -33,6 +35,7 @@
     width: 8%;
     height: 8%;
     margin-top: 1rem;
+    cursor: pointer;
   }
 
   .search-container {
@@ -49,7 +52,6 @@
     }
     img {
       height: 55%;
-      cursor: pointer;
     }
     .header-profile {
       overflow: hidden;
@@ -60,7 +62,7 @@
       height: 80%;
       margin: 0 1rem 0 1rem;
       img {
-        width: 80%;
+        min-width: 80%;
         height: 100%;
         object-fit: cover;
       }
