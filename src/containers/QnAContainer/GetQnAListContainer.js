@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
-import QnA from "../../components/QnA/QnA";
+import { QnA } from "../../components";
 import { WarningToast, ErrorToast, SuccessToast } from "../../lib/toast";
 import { getQnAList, getMyQnAList, deletePost } from "../../lib/api/qna";
 import client from "../../lib/api/client";
