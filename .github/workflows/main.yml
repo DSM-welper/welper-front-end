@@ -7,8 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout source code
+        uses: actions/checkout@v1
+      - name: Cache node modules
+        uses: actions/setup-node@v1
         with:
           node-version: '12.x'
       - name: Install Dependencies
@@ -20,7 +22,7 @@ jobs:
           BASE: ${{ secrets.NEXT_APP_API_URL }}
 
       - name: Deploy to S3
-      - uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
