@@ -28,10 +28,9 @@ jobs:
           BASE: ${{ secrets.NEXT_APP_API_URL }}
 
       - name: Deploy to S3
-        uses: aws-actions/configure-aws-credentials@v1
+      - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
       - run: aws s3 sync ./out s3://${{ secrets.AWS_STAGING_BUCKET_NAME }}
-          SOURCE_DIR: "build"
