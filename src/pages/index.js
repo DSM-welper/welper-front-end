@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/style/global.scss"
+import "../assets/style/global.scss";
 import { FirstView } from "../components/index";
 import { getRecommendList } from "../lib/api/recommend";
 
@@ -10,14 +10,13 @@ const First = ({ data }) => {
     </div>
   );
 };
-First.getInitialProps = async () => {
+export async function getServerSideProps() {
   try {
     const { recommendList } = await (await getRecommendList()).data;
-    return {
-      data: recommendList,
-    };
+    const data = recommendList;
+    return { props: { data } };
   } catch (err) {
-    return { data: err.response.data.code };
+    return { props: { data: err.response.data.code } };
   }
-};
+}
 export default First;
