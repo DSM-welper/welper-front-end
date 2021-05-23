@@ -3,22 +3,14 @@ on:
   push:
     branches:
       - master
-
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code.
-        uses: actions/checkout@master
-
-      - name: Cache node modules
-        uses: actions/cache@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+          node-version: '12.x'
       - name: Install Dependencies
         run: yarn install
 
