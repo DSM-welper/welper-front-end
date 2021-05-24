@@ -10,7 +10,7 @@ const First = ({ data }) => {
     </div>
   );
 };
-export async function getServerSideProps() {
+export async function getInitialProps() {
   try {
     const { recommendList } = await (await getRecommendList()).data;
     const data = recommendList;
