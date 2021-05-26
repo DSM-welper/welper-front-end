@@ -4,7 +4,6 @@ import { FirstView } from "../components/index";
 import { getRecommendList } from "../lib/api/recommend";
 
 const First = ({ data }) => {
-  console.log(data);
   return (
     <div>
       <FirstView list={data}></FirstView>
@@ -12,14 +11,14 @@ const First = ({ data }) => {
   );
 };
 
-export async function getStaticProps() {
+export const getServerSideProps = async () => {
   try {
     const { recommendList } = await (await getRecommendList()).data;
     const data = recommendList;
     return { props: { data } };
   } catch (err) {
     let data = err.response.data.code;
-    return { props: data };
+    return { props: { data } };
   }
-}
+};
 export default First;
