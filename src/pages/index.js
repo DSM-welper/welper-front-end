@@ -11,14 +11,12 @@ const First = ({ data }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+First.getInitialProps = async () => {
   try {
     const { recommendList } = await (await getRecommendList()).data;
-    const data = recommendList;
-    return { props: { data } };
+    return { data: recommendList };
   } catch (err) {
-    let data = err.response.data.code;
-    return { props: { data } };
+    return { data: err.response.data.code };
   }
 };
 export default First;
