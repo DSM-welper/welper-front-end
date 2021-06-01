@@ -20,11 +20,9 @@ const Header = ({ handleSearch }) => {
 
   const getToken = useCallback(() => {
     const token = cookie.get("accessToken");
-    token
-      ? (client.defaults.headers.common["Authorization"] = token)
-      : router.push("/login");
+    token ? (client.defaults.headers.common["Authorization"] = token) : router.push("/login");
   }, []);
-  
+
   useEffect(() => {
     getToken();
     onMenu();
@@ -40,11 +38,7 @@ const Header = ({ handleSearch }) => {
   };
   return (
     <div className="header-container">
-      <img
-        src={welper_logo}
-        className="logo"
-        onClick={() => Router.push("/")}
-      />
+      <img src={welper_logo} className="logo" onClick={() => Router.push("/")} />
 
       <div className="search-container">
         <Searchbar handleSearch={handleSearch} />
@@ -57,6 +51,7 @@ const Header = ({ handleSearch }) => {
           <h5>{name}</h5>
           <h5 onClick={() => Router.push("/my-profile")}>프로필 설정</h5>
           <h5 onClick={() => Router.push("/my-page")}>마이페이지</h5>
+          <h5 onClick={() => Router.push("/secession")}>탈퇴하기</h5>
           <h6 onClick={logout}>로그아웃</h6>
         </div>
       </div>
