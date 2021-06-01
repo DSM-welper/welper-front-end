@@ -17,7 +17,7 @@ Search.getInitialProps = async (context) => {
       keyword: context.query.id,
     };
   } catch (err) {
-    return { data: err.response.data.code, keyword: context.query.id };
+    return { data: err.code, keyword: context.query.id };
   }
 };
 export default Search;

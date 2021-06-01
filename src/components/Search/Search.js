@@ -4,9 +4,10 @@ import SearchItem from "./SearchItem";
 import NotFound from "../FirstView/NotFound";
 
 const Search = ({ list, prevPage, nextPage, page }) => {
+  console.log(list);
   return (
     <div className="search">
-      {!(list === "NON_EXIST_PAGE") && list.length > 0 ? (
+      {!(typeof list === "string") ? (
         list.map((l, i) => {
           return <SearchItem key={i} title={l.servNm} description={l.servDgst} category={l.jurOrgNm} />;
         })
