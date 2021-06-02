@@ -35,7 +35,11 @@ export async function secession(password) {
   return await client.delete(`/auth?password=${password}`);
 }
 
-export async function BookMark(id) {
+export async function addBookMark(id) {
   const servId = id;
   return await client.post(`/category/bookMark/${servId}`);
+}
+
+export async function cancelBookMark(id) {
+  return await client.delete(`/category/bookMark/${id}`);
 }

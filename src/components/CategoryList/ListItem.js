@@ -1,8 +1,9 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useState } from "react";
 import "./Category.scss";
 import { category_datail, bookmark, bookmark_color } from "../../assets/img";
 import Router from "next/router";
-import { BookMark } from "../../lib/api/user";
+import { addBookMark, cancelBookMark } from "../../lib/api/user";
+import { SuccessToast } from "../../lib/toast";
 
 const ListItem = forwardRef((props, ref) => {
   let markSrc;
@@ -17,16 +18,23 @@ const ListItem = forwardRef((props, ref) => {
   };
 
   const bookMark = (id) => {
-    if (props.isBookMark === false) {
-      BookMark(id)
+    if (isMark === bookmark) {
+      addBookMark(id)
         .then((res) => {
-          if (res.status === 200)
-            alert("저장되었습니다. 마이페이지에서 확인하세요.");
+          if (res.status === 200) SuccessToast("저장되었습니다. 마이페이지에서 확인하세요.");
           setMark(bookmark_color);
         })
         .catch((err) => {
-          if (err.response.data.code == "INVALID_TOKEN")
-            WarningToast("로그인 후에 사용 가능한 기능입니다. 로그인해 주세요");
+          if (err.response.data.code == "INVALID_TOKEN") WarningToast("로그인 후에 사용 가능한 기능입니다. 로그인해 주세요");
+        });
+    } else if (isMark === bookmark_color) {
+      cancelBookMark(id)
+        .then((res) => {
+          if (res.status === 200) SuccessToast("북마크가 성공적으로 취소되었습니다.");
+          setMark(bookmark);
+        })
+        .catch((err) => {
+          if (err.response.data.code == "INVALID_TOKEN") WarningToast("로그인 후에 사용 가능한 기능입니다. 로그인해 주세요");
         });
     }
   };
@@ -40,10 +48,7 @@ const ListItem = forwardRef((props, ref) => {
             <div className="content-box">
               <span>{props.list.servDgst.substring(0, 120)}</span>
             </div>
-            <img
-              src={category_datail}
-              onClick={() => getDetail(props.list.servId)}
-            />
+            <img src={category_datail} onClick={() => getDetail(props.list.servId)} />
 
             <img src={isMark} onClick={() => bookMark(props.list.servId)} />
           </div>
@@ -53,10 +58,7 @@ const ListItem = forwardRef((props, ref) => {
             <div className="content-box">
               <span>{props.list.servDgst.substring(0, 120)}</span>
             </div>
-            <img
-              src={category_datail}
-              onClick={() => getDetail(props.list.servId)}
-            />
+            <img src={category_datail} onClick={() => getDetail(props.list.servId)} />
 
             <img src={isMark} onClick={() => bookMark(props.list.servId)} />
           </div>
