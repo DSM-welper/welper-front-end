@@ -14,7 +14,7 @@ const QnA = ({ postList, prevPage, nextPage, page, onDeletePost }) => {
             })}
           </article>
         ) : (
-          <NotFound errorText="더 이상 글이 없습니다." />
+          <NotFound errorText="글이 없습니다." />
         )}
         <div className="page">
           <div className="page-wrapper">

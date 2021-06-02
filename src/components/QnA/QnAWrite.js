@@ -26,15 +26,12 @@ const QnAWrite = () => {
   };
 
   const getQna = () => {
-    if (posts.title == "" || posts.category == "" || posts.content == "")
-      WarningToast("비어있습니다. 올바르게 기입해 주세요.");
+    if (posts.title == "" || posts.category == "" || posts.content == "") WarningToast("비어있습니다. 올바르게 기입해 주세요.");
     else {
       CreateQnA(posts).then((res) => {
         if (res.status === 200) {
           SuccessToast("글이 등록 되었습니다.");
-          setTimeout(() => {
-            Router.push("/qna/mine");
-          }, 3000);
+          Router.push("/qna");
         }
       });
     }
